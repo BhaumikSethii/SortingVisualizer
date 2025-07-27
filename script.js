@@ -142,32 +142,6 @@ function insertionSort(array) {
   return swaps;
 }
 
-function quickSort(array) {
-  const swaps = [];
-  function partition(arr, low, high) {
-    const pivot = arr[high];
-    let i = low - 1;
-    for (let j = low; j < high; j++) {
-      if (arr[j] < pivot) {
-        i++;
-        swaps.push([i, j]);
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
-    }
-    swaps.push([i + 1, high]);
-    [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
-    return i + 1;
-  }
-  function sort(arr, low, high) {
-    if (low < high) {
-      const pi = partition(arr, low, high);
-      sort(arr, low, pi - 1);
-      sort(arr, pi + 1, high);
-    }
-  }
-  sort(array, 0, array.length - 1);
-  return swaps;
-}
 
 // Initialize the array
 randomizeArray();
